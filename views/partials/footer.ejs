@@ -1,0 +1,51 @@
+<!-- views/partials/footer.ejs -->
+    </div>
+  </div>
+<!-- views/partials/footer.ejs (or update the script in your main file) -->
+<script>
+// Sidebar toggle
+document.getElementById('toggle-sidebar').addEventListener('click', function() {
+    toggleSidebar('hide');
+});
+
+document.getElementById('show-sidebar-btn').addEventListener('click', function() {
+    toggleSidebar('show');
+});
+
+function toggleSidebar(action) {
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.getElementById('main-content');
+    const showBtn = document.getElementById('show-sidebar-btn');
+
+    if (action === 'hide' || sidebar.classList.contains('sidebar-expanded')) {
+    // Hide sidebar
+    sidebar.classList.remove('sidebar-expanded');
+    sidebar.classList.add('sidebar-collapsed');
+    mainContent.classList.remove('ml-64');
+    mainContent.classList.add('ml-0');
+    showBtn.classList.remove('hidden');
+    } else {
+    // Show sidebar
+    sidebar.classList.remove('sidebar-collapsed');
+    sidebar.classList.add('sidebar-expanded');
+    mainContent.classList.remove('ml-0');
+    mainContent.classList.add('ml-64');
+    showBtn.classList.add('hidden');
+    }
+}
+
+// Check screen size on load and resize
+function checkScreenSize() {
+    if (window.innerWidth < 768) {
+    toggleSidebar('hide');
+    }
+}
+
+// Initial check
+checkScreenSize();
+
+// Listen for window resize
+window.addEventListener('resize', checkScreenSize);
+</script>
+</body>
+</html>
