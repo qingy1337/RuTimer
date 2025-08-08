@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const doneScrambleBtn = document.getElementById("done-scrambling-btn");
   const trackSelector = document.getElementById("track-selector");
   const timesList = document.getElementById("times-list");
+  const timesHeader = document.getElementById("times-header");
 
   // Timer state
   let timerRunning = false;
@@ -34,6 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
         option.disabled = true;
         option.selected = true;
         trackSelector.appendChild(option);
+
+        // Update header count to 0 when no tracks
+        if (timesHeader) {
+          timesHeader.textContent = `Recent Times (0)`;
+        }
       } else {
         tracks.forEach((track) => {
           const option = document.createElement("option");
@@ -57,6 +63,12 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const response = await fetch(`/timer/tracks/${trackId}/times`);
       const times = await response.json();
+
+      // Update header with count of solves for current track
+      if (timesHeader) {
+        const count = Array.isArray(times) ? times.length : 0;
+        timesHeader.textContent = `Recent Times (${count.toLocaleString()})`;
+      }
 
       // Update times list
       if (times.length === 0) {
