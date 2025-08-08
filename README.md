@@ -1,6 +1,6 @@
 # RuTimer - Rubik's Cube Timer
 
-A web application for timing Rubik's Cube solves, tracking progress, and analyzing performance.
+A web app for timing Rubik's Cube solves, tracking progress, and analyzing performance.
 
 ## Features
 
@@ -22,9 +22,8 @@ A web application for timing Rubik's Cube solves, tracking progress, and analyzi
 
 1. Clone the repository
 2. Install dependencies: `npm install`
-3. Set up your MongoDB database and add connection details to `config/database.js`
-4. Start the server: `npm start`
-5. Visit `http://localhost:3000` in your browser
+3. Start the server: `npm start`
+4. Visit `http://0.0.0.0:3210` in your browser
 
 ## Project Structure
 
